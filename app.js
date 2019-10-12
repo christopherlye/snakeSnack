@@ -30,49 +30,35 @@ const game = {
     goal: 5
 }
 
-const snakeOne = {
-    name: 'Orange Snake',
-    width: 20,
-    height: 20,
-    color: 'orange',
-    parts: [],
-    direction: null,
-    score: 0,
-    speed: 5,
-    gamesWon: 0
-    // interval: null,
-    // intervalVar: 20
-};
-
-const snakeTwo = {
-    name: "Blue Snake",
-    width: 20,
-    height: 20,
-    color: 'blue',
-    parts: [],
-    direction: null,
-    score: 0,
-    speed: 5,
-    gamesWon: 0
-    // interval: null,
-    // intervalVar: 20
-};
-
-const fastFood = {
-    width: 20,
-    height: 20,
-    color: 'green',
-    eaten: true,
-    items: []
+class Snake {
+    constructor(name, color, width, height, parts, direction, score, speed, gamesWon) {
+        this.name = name;
+        this.color = color;
+        this.width = 20;
+        this.height = 20;
+        this.parts = [];
+        this.direction = null;
+        this.score = 0;
+        this.speed = 5;
+        this.gamesWon = 0;
+    }
 }
 
-const slowFood = {
-    width: 20,
-    height: 20,
-    color: 'red',
-    eaten: true,
-    items: []
+const snakeOne = new Snake('Orange Snake', 'orange');
+const snakeTwo = new Snake('Blue Snake', 'blue');
+
+class Food {
+    constructor(color, width, height, eaten, items) {
+        this.color = color;
+        this.width = 20;
+        this.height = 20;
+        this.eaten = true;
+        this.items = [];
+    }
 }
+
+const fastFood = new Food('green');
+const slowFood = new Food('red');
 
 
 //////////////////////////////////////////////////////////////////////
@@ -173,7 +159,7 @@ const snakeCollideAnotherHead = (snakeHead, snakeAnotherHead) => {
 
 
 //////////////////////////////////////////////////////////////////////
-//Draw objects
+//Draw objects - cannot refactor this as I'm using a callback (forEach)
 //////////////////////////////////////////////////////////////////////
 
 const drawSnakeOne = (snakeObj, i) => { // snakeObj is snake object, i is the index of the array (i.e. other parts of the snake)
@@ -426,13 +412,13 @@ const collideAnother = (snakeObj1, snakeObj2) => {
 }
 
 const checkScore = (snakeObj1, snakeObj2) => {
-    if (snakeObj1.score  === game.goal) {
+    if (snakeObj1.score  >= game.goal) {
         snakeObj1.gamesWon += 1;
         clearInterval(game.interval);
         ctx.fillText(`${snakeObj1.name} wins!`, 150, 250);
         return;
     }
-    else if (snakeObj2.score === game.goal) {
+    else if (snakeObj2.score >= game.goal) {
         snakeObj2.gamesWon += 1;
         clearInterval(game.interval);
         ctx.fillText(`${snakeObj2.name} wins!`, 150, 250);
