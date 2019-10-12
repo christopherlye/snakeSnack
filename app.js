@@ -95,7 +95,6 @@ document.getElementById('ctx').onmousedown = () => {
         // clear interval so that it won't repeat itself too many times
         clearInterval(game.intervalVar);
         game.isRunning = false;
-        console.log(game.isRunning);
         fastFood.items = [];
     }
     startGame();
@@ -146,10 +145,9 @@ document.onkeydown = (event) => {
 //Collide objects
 //////////////////////////////////////////////////////////////////////
 
-const snakeCollideFastFood = (snakeObj, foodObj) => {
+const snakeCollideFood = (snakeObj, foodObj) => {
     let snakeHead = snakeObj.parts[0]; // first snake part is snake head
     let foodItem1 = foodObj.items[0]; // first food item
-    console.log(foodItem1);
     // return true if both x and y coordinates of head of snake is close to / touching the food
     return ((Math.abs(snakeHead.x - foodItem1.x) < 20) &&
             (Math.abs(snakeHead.y - foodItem1.y) < 20));
@@ -160,6 +158,10 @@ const snakeCollideItself = (snakeHead, snakeBody) => {
     return ((Math.abs(snakeHead.x - snakeBody.x) < 5) &&
             (Math.abs(snakeHead.y - snakeBody.y) < 5));
 }
+
+// both snakes head collide
+
+// one snake head collides on another's body
 
 //////////////////////////////////////////////////////////////////////
 //Draw objects
@@ -189,10 +191,17 @@ const drawSnakeTwo = (snakeObj, i) => { // snakeObj is snake object, i is the in
     ctx.restore(); //restores state of canvas
 }
 
-const drawFood = (food) => {
+const drawFastFood = () => {
     ctx.save();
     ctx.fillStyle = fastFood.color;
-    ctx.fillRect(food.x, food.y, fastFood.width, fastFood.height);
+    ctx.fillRect(fastFood.items[0].x, fastFood.items[0].y, fastFood.width, fastFood.height);
+    ctx.restore();
+}
+
+const drawSlowFood = () => {
+    ctx.save();
+    ctx.fillStyle = slowFood.color;
+    ctx.fillRect(slowFood.items[0].x, slowFood.items[0].y, slowFood.width, slowFood.height);
     ctx.restore();
 }
 
@@ -320,11 +329,13 @@ const checkSnakePosition = (snake) => {
 //////////////////////////////////////////////////////////////////////
 
 const snakeOneEatFastFood = () => {
-    if (snakeCollideFastFood(snakeOne, fastFood)) { // when snake and fastFood collide do the following
+    if (snakeCollideFood(snakeOne, fastFood)) { // when snake and fastFood collide do the following
         fastFood.items = []; // fastFood is eaten
         fastFood.eaten = true;
-        createFood();
+        createFastFood();
         snakeOne.score += 1;
+        // snakeOne.speed.x += 5;
+        // snakeOne.speed.y += 5;
         let new_X, new_Y; // create new x and y positions for the snake after eating the fastFood
         if (snakeOne.direction === left) { // left
             new_X = snakeOne.parts[0].x - 10;
@@ -346,11 +357,19 @@ const snakeOneEatFastFood = () => {
     }
 }
 
+const snakeOneEatSlowFood = () => {
+    if (snakeCollideFood(snakeOne, slowFood)) { // when snake and slowFood collide do the following
+        slowFood.items = []; // slowFood is eaten
+        slowFood.eaten = true;
+        createSlowFood();
+    }
+}
+
 const snakeTwoEatFastFood = () => {
-    if (snakeCollideFastFood(snakeTwo, fastFood)) { // when snake and fastFood collide do the following
+    if (snakeCollideFood(snakeTwo, fastFood)) { // when snake and fastFood collide do the following
         fastFood.items = []; // fastFood is eaten
         fastFood.eaten = true;
-        createFood();
+        createFastFood();
         snakeTwo.score += 1;
         let new_X, new_Y; // create new x and y positions for the snake after eating the fastFood
         if (snakeTwo.direction === left) { // left
@@ -373,6 +392,14 @@ const snakeTwoEatFastFood = () => {
     }
 }
 
+const snakeTwoEatSlowFood = () => {
+    if (snakeCollideFood(snakeTwo, slowFood)) { // when snake and slowFood collide do the following
+        slowFood.items = []; // slowFood is eaten
+        slowFood.eaten = true;
+        createSlowFood();
+    }
+}
+
 
 //////////////////////////////////////////////////////////////////////
 //Start Game function - used only when event triggered
@@ -383,7 +410,7 @@ const startGame = () => {
     snakeTwo.score = 0;
     game.isRunning = true;
     game.isPaused = false;
-    game.intervalVar = setInterval(updateScreen, 100);
+    game.intervalVar = setInterval(updateScreen, 20);
 
 }
 
@@ -409,24 +436,36 @@ isGameOver = () => {
 //Update screen
 //////////////////////////////////////////////////////////////////////
 
-createFood = () => {
+createFastFood = () => {
     let pos_x = Math.random() * 485 + 5; // fastFood appears randomly at 5 - 490
     let pos_y = Math.random() * 485 + 5;
     fastFood.items[0] = {x:pos_x, y:pos_y};
     fastFood.eaten = false;
 }
 
+createSlowFood = () => {
+    let pos_x = Math.random() * 485 + 5; // fastFood appears randomly at 5 - 490
+    let pos_y = Math.random() * 485 + 5;
+    slowFood.items[0] = {x:pos_x, y:pos_y};
+    slowFood.eaten = false;
+}
+
 updateScreen = () => {
     if (!game.isPaused) {
         if (fastFood.items.length === 0) {
-            createFood();
+            createFastFood();
+            createSlowFood();
         }
         ctx.clearRect(0, 0, ctxWidth, ctxHeight); // clear the canvas
-        fastFood.items.forEach(drawFood); // for each fastFood item, draw it on the screen
+        fastFood.items.forEach(drawFastFood); // for each fastFood item, draw it on the screen
+        slowFood.items.forEach(drawSlowFood); // for each slowFood item, draw it on the screen
+
         snakeOne.parts.forEach(drawSnakeOne); // for each part of the snake, draw it on the screen
         snakeTwo.parts.forEach(drawSnakeTwo); // for each part of the snake, draw it on the screen
         snakeOneEatFastFood();
         snakeTwoEatFastFood();
+        snakeOneEatSlowFood();
+        snakeTwoEatSlowFood();
         ctx.fillText(`Orange: ${snakeOne.score}`, 410, 30);
         ctx.fillText(`Blue: ${snakeTwo.score}`, 10, 30);
         isGameOver();
