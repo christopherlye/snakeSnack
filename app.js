@@ -43,22 +43,22 @@ const snakeOne = {
     speed: {x: 5, y: 5}
 };
 
-// const snakeTwo = {
-//     width: 20,
-//     height: 20,
-//     color: 'blue',
-//     parts: [
-//         // head x and y position
-//         {x: 120, y: 200},
-//         // body
-//         {x: 110, y: 200},
-//         // tail
-//         {x: 100, y: 200}
-//     ],
-//     direction: null,
-//     score: 0,
-//     speed: {x: 5, y: 5}
-// };
+const snakeTwo = {
+    width: 20,
+    height: 20,
+    color: 'blue',
+    parts: [
+        // head x and y position
+        {x: 120, y: 200},
+        // body
+        {x: 110, y: 200},
+        // tail
+        {x: 100, y: 200}
+    ],
+    direction: null,
+    score: 0,
+    speed: {x: 5, y: 5}
+};
 
 const fastFood = {
     width: 20,
@@ -96,6 +96,7 @@ document.getElementById('ctx').onmousedown = () => {
         clearInterval(game.intervalVar);
         game.isRunning = false;
         console.log(game.isRunning);
+        fastFood.items = [];
     }
     startGame();
 }
@@ -117,19 +118,19 @@ document.onkeydown = (event) => {
     else if (event.keyCode === left && snakeOne.direction != right) {
         snakeOne.direction = left;
     }
-    // // snakeTwo direction keys
-    // else if (event.keyCode === w && snakeTwo.direction != down) {
-    //     snakeTwo.direction = up;
-    // }
-    // else if (event.keyCode === s && snakeTwo.direction != up) {
-    //     snakeTwo.direction = down;
-    // }
-    // else if (event.keyCode === a && snakeTwo.direction != right) {
-    //     snakeTwo.direction = left;
-    // }
-    // else if (event.keyCode === d && snakeTwo.direction != left) {
-    //     snakeTwo.direction = right;
-    // }
+    // snakeTwo direction keys
+    else if (event.keyCode === w && snakeTwo.direction != down) {
+        snakeTwo.direction = up;
+    }
+    else if (event.keyCode === s && snakeTwo.direction != up) {
+        snakeTwo.direction = down;
+    }
+    else if (event.keyCode === a && snakeTwo.direction != right) {
+        snakeTwo.direction = left;
+    }
+    else if (event.keyCode === d && snakeTwo.direction != left) {
+        snakeTwo.direction = right;
+    }
     // pause game
     else if (event.keyCode === spacebar) {
         if (game.isPaused) {
@@ -148,6 +149,7 @@ document.onkeydown = (event) => {
 const snakeCollideFastFood = (snakeObj, foodObj) => {
     let snakeHead = snakeObj.parts[0]; // first snake part is snake head
     let foodItem1 = foodObj.items[0]; // first food item
+    console.log(foodItem1);
     // return true if both x and y coordinates of head of snake is close to / touching the food
     return ((Math.abs(snakeHead.x - foodItem1.x) < 20) &&
             (Math.abs(snakeHead.y - foodItem1.y) < 20));
@@ -175,17 +177,17 @@ const drawSnakeOne = (snakeObj, i) => { // snakeObj is snake object, i is the in
     ctx.restore(); //restores state of canvas
 }
 
-// const drawSnakeTwo = (snakeObj, i) => { // snakeObj is snake object, i is the index of the array (i.e. other parts of the snake)
-//     ctx.save(); //saves state of canvas
-//     if (i === 0) {
-//         ctx.fillStyle = 'black'; // create different colour for snakeObj head
-//     }
-//     else {
-//         ctx.fillStyle = snakeTwo.color;
-//     }
-//     ctx.fillRect(snakeObj.x, snakeObj.y, snakeTwo.width, snakeTwo.height); // draw the rectangle
-//     ctx.restore(); //restores state of canvas
-// }
+const drawSnakeTwo = (snakeObj, i) => { // snakeObj is snake object, i is the index of the array (i.e. other parts of the snake)
+    ctx.save(); //saves state of canvas
+    if (i === 0) {
+        ctx.fillStyle = 'black'; // create different colour for snakeObj head
+    }
+    else {
+        ctx.fillStyle = snakeTwo.color;
+    }
+    ctx.fillRect(snakeObj.x, snakeObj.y, snakeTwo.width, snakeTwo.height); // draw the rectangle
+    ctx.restore(); //restores state of canvas
+}
 
 const drawFood = (food) => {
     ctx.save();
@@ -244,43 +246,52 @@ const moveSnakeOne = () => {
     }
 }
 
-// const moveSnakeTwo = () => {
-//     // for all parts of the snake
-//     for (let i = snakeTwo.parts.length - 1; i >= 0; i--) {
-//         if (snakeTwo.direction === left) { // if snakeTwo.direction is left
-//             if (i === 0) { // if this is the snake's head
-//                 snakeTwo.parts[i].x = snakeTwo.parts[i].x - snakeTwo.speed.x; // decrease x value by 5
-//             }
-//             // update the tail of the snake with the position of the body
-//             snakeTwo.parts[i].x = snakeTwo.parts[i - 1].x;
-//             snakeTwo.parts[i].y = snakeTwo.parts[i - 1].y;
-//         }
-//         else if (snakeTwo.direction === up) { // if snakeTwo.direction is up
-//             if (i === 0) { // if this is the snake's head
-//                 snakeTwo.parts[i].y = snakeTwo.parts[i].y - snakeTwo.speed.x; // decrease y value by 5
-//             }
-//             // update the tail of the snake with the position of the body
-//             snakeTwo.parts[i].x = snakeTwo.parts[i - 1].x;
-//             snakeTwo.parts[i].y = snakeTwo.parts[i - 1].y;
-//         }
-//         else if (snakeTwo.direction === right) { // if snakeTwo.direction is right
-//             if (i === 0) { // if this is the snake's head
-//                 snakeTwo.parts[i].x = snakeTwo.parts[i].x + snakeTwo.speed.x; // increase x value by 5
-//             }
-//             // update the tail of the snake with the position of the body
-//             snakeTwo.parts[i].x = snakeTwo.parts[i - 1].x;
-//             snakeTwo.parts[i].y = snakeTwo.parts[i - 1].y;
-//         }
-//         else if (snakeTwo.direction === down) { // if snakeTwo.direction is down
-//             if (i === 0) { // if this is the snake's head
-//                 snakeTwo.parts[i].y = snakeTwo.parts[i].y + snakeTwo.speed.x; // increase y value by 5
-//             }
-//             // update the tail of the snake with the position of the body
-//             snakeTwo.parts[i].x = snakeTwo.parts[i - 1].x;
-//             snakeTwo.parts[i].y = snakeTwo.parts[i - 1].y;
-//         }
-//     }
-// }
+const moveSnakeTwo = () => {
+    // for all parts of the snake
+    for (let i = snakeTwo.parts.length - 1; i >= 0; i--) {
+        if (snakeTwo.direction === left) { // if snakeTwo.direction is left
+            if (i === 0) { // if this is the snake's head
+                snakeTwo.parts[i].x = snakeTwo.parts[i].x - snakeTwo.speed.x; // decrease x value by 5
+            }
+            // update the tail of the snake with the position of the body
+            else {
+                snakeTwo.parts[i].x = snakeTwo.parts[i - 1].x;
+                snakeTwo.parts[i].y = snakeTwo.parts[i - 1].y;
+            }
+        }
+        else if (snakeTwo.direction === up) { // if snakeTwo.direction is up
+            if (i === 0) { // if this is the snake's head
+                snakeTwo.parts[i].y = snakeTwo.parts[i].y - snakeTwo.speed.x; // decrease y value by 5
+            }
+            else {
+                snakeTwo.parts[i].x = snakeTwo.parts[i - 1].x;
+                snakeTwo.parts[i].y = snakeTwo.parts[i - 1].y;
+            }
+            // update the tail of the snake with the position of the body
+        }
+        else if (snakeTwo.direction === right) { // if snakeTwo.direction is right
+            if (i === 0) { // if this is the snake's head
+                snakeTwo.parts[i].x = snakeTwo.parts[i].x + snakeTwo.speed.x; // increase x value by 5
+            }
+            // update the tail of the snake with the position of the body
+            else {
+                snakeTwo.parts[i].x = snakeTwo.parts[i - 1].x;
+                snakeTwo.parts[i].y = snakeTwo.parts[i - 1].y;
+            }
+        }
+        else if (snakeTwo.direction === down) { // if snakeTwo.direction is down
+            if (i === 0) { // if this is the snake's head
+                snakeTwo.parts[i].y = snakeTwo.parts[i].y + snakeTwo.speed.x; // increase y value by 5
+            }
+            // update the tail of the snake with the position of the body
+            else {
+                snakeTwo.parts[i].x = snakeTwo.parts[i - 1].x;
+                snakeTwo.parts[i].y = snakeTwo.parts[i - 1].y;
+            }
+        }
+    }
+}
+
 
 
 //////////////////////////////////////////////////////////////////////
@@ -312,6 +323,7 @@ const snakeOneEatFastFood = () => {
     if (snakeCollideFastFood(snakeOne, fastFood)) { // when snake and fastFood collide do the following
         fastFood.items = []; // fastFood is eaten
         fastFood.eaten = true;
+        createFood();
         snakeOne.score += 1;
         let new_X, new_Y; // create new x and y positions for the snake after eating the fastFood
         if (snakeOne.direction === left) { // left
@@ -334,31 +346,32 @@ const snakeOneEatFastFood = () => {
     }
 }
 
-// const snakeTwoEatFastFood = () => {
-//     if (snakeCollideFastFood(snakeTwo, fastFood)) { // when snake and fastFood collide do the following
-//         fastFood.items = []; // fastFood is eaten
-//         fastFood.eaten = true;
-//         snakeTwo.score += 1;
-//         let new_X, new_Y; // create new x and y positions for the snake after eating the fastFood
-//         if (snakeTwo.direction === left) { // left
-//             new_X = snakeTwo.parts[0].x - 10;
-//             new_Y = snakeTwo.parts[0].y;
-//         }
-//         else if (snakeTwo.direction === up) { // up
-//             new_X = snakeTwo.parts[0].x;
-//             new_Y = snakeTwo.parts[0].y - 10;
-//         }
-//         else if (snakeTwo.direction === right) { // right
-//             new_X = snakeTwo.parts[0].x + 10;
-//             new_Y = snakeTwo.parts[0].y;
-//         }
-//         else if (snakeTwo.direction === down) { // down
-//             new_X = snakeTwo.parts[0].x;
-//             new_Y = snakeTwo.parts[0].y + 10;
-//         }
-//     snakeTwo.parts.unshift({x:new_X, y:new_Y}); // add to the head of the snake
-//     }
-// }
+const snakeTwoEatFastFood = () => {
+    if (snakeCollideFastFood(snakeTwo, fastFood)) { // when snake and fastFood collide do the following
+        fastFood.items = []; // fastFood is eaten
+        fastFood.eaten = true;
+        createFood();
+        snakeTwo.score += 1;
+        let new_X, new_Y; // create new x and y positions for the snake after eating the fastFood
+        if (snakeTwo.direction === left) { // left
+            new_X = snakeTwo.parts[0].x - 10;
+            new_Y = snakeTwo.parts[0].y;
+        }
+        else if (snakeTwo.direction === up) { // up
+            new_X = snakeTwo.parts[0].x;
+            new_Y = snakeTwo.parts[0].y - 10;
+        }
+        else if (snakeTwo.direction === right) { // right
+            new_X = snakeTwo.parts[0].x + 10;
+            new_Y = snakeTwo.parts[0].y;
+        }
+        else if (snakeTwo.direction === down) { // down
+            new_X = snakeTwo.parts[0].x;
+            new_Y = snakeTwo.parts[0].y + 10;
+        }
+    snakeTwo.parts.unshift({x:new_X, y:new_Y}); // add to the head of the snake
+    }
+}
 
 
 //////////////////////////////////////////////////////////////////////
@@ -366,9 +379,8 @@ const snakeOneEatFastFood = () => {
 //////////////////////////////////////////////////////////////////////
 
 const startGame = () => {
-
     snakeOne.score = 0;
-    // snakeTwo.score = 0;
+    snakeTwo.score = 0;
     game.isRunning = true;
     game.isPaused = false;
     game.intervalVar = setInterval(updateScreen, 100);
@@ -397,28 +409,31 @@ isGameOver = () => {
 //Update screen
 //////////////////////////////////////////////////////////////////////
 
+createFood = () => {
+    let pos_x = Math.random() * 485 + 5; // fastFood appears randomly at 5 - 490
+    let pos_y = Math.random() * 485 + 5;
+    fastFood.items[0] = {x:pos_x, y:pos_y};
+    fastFood.eaten = false;
+}
+
 updateScreen = () => {
     if (!game.isPaused) {
-        ctx.clearRect(0, 0, ctxWidth, ctxHeight); // clear the canvas
-        while(fastFood.eaten) {
-            let pos_x = Math.random() * 485 + 5; // fastFood appears randomly at 5 - 490
-            let pos_y = Math.random() * 485 + 5;
-            fastFood.items[0] = {x:pos_x, y:pos_y};
-            fastFood.eaten = false;
+        if (fastFood.items.length === 0) {
+            createFood();
         }
-
+        ctx.clearRect(0, 0, ctxWidth, ctxHeight); // clear the canvas
         fastFood.items.forEach(drawFood); // for each fastFood item, draw it on the screen
         snakeOne.parts.forEach(drawSnakeOne); // for each part of the snake, draw it on the screen
-        // snakeTwo.parts.forEach(drawSnakeTwo); // for each part of the snake, draw it on the screen
+        snakeTwo.parts.forEach(drawSnakeTwo); // for each part of the snake, draw it on the screen
         snakeOneEatFastFood();
-        // snakeTwoEatFastFood();
+        snakeTwoEatFastFood();
         ctx.fillText(`Orange: ${snakeOne.score}`, 410, 30);
-        // ctx.fillText(`Blue: ${snakeTwo.score}`, 10, 30);
+        ctx.fillText(`Blue: ${snakeTwo.score}`, 10, 30);
         isGameOver();
         checkSnakePosition(snakeOne);
-        // checkSnakePosition(snakeTwo);
+        checkSnakePosition(snakeTwo);
         moveSnakeOne(); // update the x and y coordinates of the snake based on the user input
-        // moveSnakeTwo(); // update the x and y coordinates of the snake based on the user input
+        moveSnakeTwo(); // update the x and y coordinates of the snake based on the user input
     }
     else {
         ctx.fillText('Game paused', 200, 250);
