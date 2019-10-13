@@ -18,36 +18,48 @@ let orangeGamesWon = document.getElementById('orange-gamesWon');
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 --------------------------------------------------------------------*/
 
+// Food
+
 let greenFastFood = document.createElement('img');
 greenFastFood.setAttribute('id', 'fastFood');
-greenFastFood.setAttribute('src', 'fast-food-3.png');
+greenFastFood.setAttribute('src', 'sprites/fast-food-3.png');
+greenFastFood.setAttribute('style', 'display: none');
 document.body.appendChild(greenFastFood);
 
 let redSlowFood = document.createElement('img');
 redSlowFood.setAttribute('id', 'slowFood');
-redSlowFood.setAttribute('src', 'slow-food-3.png');
-// redSlowFood.setAttribute('style', 'display: none');
+redSlowFood.setAttribute('src', 'sprites/slow-food-3.png');
+redSlowFood.setAttribute('style', 'display: none');
 document.body.appendChild(redSlowFood);
 console.log(redSlowFood);
 
+// Orange Snake
+
 let orangeSnakeBody = document.createElement('img');
 orangeSnakeBody.setAttribute('id', 'orangeSnakeBody');
-orangeSnakeBody.setAttribute('src', 'orange-snake-body.gif');
+orangeSnakeBody.setAttribute('src', 'sprites/orange-snake-body.gif');
+orangeSnakeBody.setAttribute('style', 'display: none');
 document.body.appendChild(orangeSnakeBody);
 
 let orangeSnakeHead = document.createElement('img');
 orangeSnakeHead.setAttribute('id', 'orangeSnakeHead');
-orangeSnakeHead.setAttribute('src', 'orange-snake-head.gif');
+orangeSnakeHead.setAttribute('src', 'sprites/orange-snake-head-left.gif');
+orangeSnakeHead.setAttribute('style', 'display: none');
 document.body.appendChild(orangeSnakeHead);
+
+
+// Blue Snake
 
 let blueSnakeBody = document.createElement('img');
 blueSnakeBody.setAttribute('id', 'blueSnakeBody');
-blueSnakeBody.setAttribute('src', 'blue-snake-body.gif');
+blueSnakeBody.setAttribute('src', 'sprites/blue-snake-body.gif');
+blueSnakeBody.setAttribute('style', 'display: none');
 document.body.appendChild(blueSnakeBody);
 
 let blueSnakeHead = document.createElement('img');
 blueSnakeHead.setAttribute('id', 'blueSnakeHead');
-blueSnakeHead.setAttribute('src', 'blue-snake-head.gif');
+blueSnakeHead.setAttribute('src', 'sprites/blue-snake-head-right.gif');
+blueSnakeHead.setAttribute('style', 'display: none');
 document.body.appendChild(blueSnakeHead);
 
 
@@ -64,6 +76,7 @@ document.body.appendChild(blueSnakeHead);
 let ctxWidth = document.getElementById('ctx').width;
 let ctxHeight = document.getElementById('ctx').height;
 ctx.font = '20px Calibri';
+ctx.fillStyle = 'green';
 ctx.fillText('Click to start the game', 140, 250);
 
 // window.onload = () => {
@@ -92,7 +105,7 @@ class Snake {
         this.parts = [];
         this.direction = null;
         this.score = 0;
-        this.speed = 5;
+        this.speed = 0;
         this.gamesWon = 0;
     }
 }
@@ -144,28 +157,36 @@ document.onkeydown = (event) => {
     // snakeOne direction keys
     if (event.keyCode === up && snakeOne.direction != down) {
         snakeOne.direction = up;
+        orangeSnakeHead.setAttribute('src', 'sprites/orange-snake-head-up.gif');
     }
     else if (event.keyCode === down && snakeOne.direction != up) {
         snakeOne.direction = down;
+        orangeSnakeHead.setAttribute('src', 'sprites/orange-snake-head-down.gif');
     }
     else if (event.keyCode === right && snakeOne.direction != left) {
         snakeOne.direction = right;
+        orangeSnakeHead.setAttribute('src', 'sprites/orange-snake-head-right.gif');
     }
     else if (event.keyCode === left && snakeOne.direction != right) {
         snakeOne.direction = left;
+        orangeSnakeHead.setAttribute('src', 'sprites/orange-snake-head-left.gif');
     }
     // snakeTwo direction keys
     else if (event.keyCode === w && snakeTwo.direction != down) {
         snakeTwo.direction = up;
+        blueSnakeHead.setAttribute('src', 'sprites/blue-snake-head-up.gif');
     }
     else if (event.keyCode === s && snakeTwo.direction != up) {
         snakeTwo.direction = down;
+        blueSnakeHead.setAttribute('src', 'sprites/blue-snake-head-down.gif');
     }
     else if (event.keyCode === a && snakeTwo.direction != right) {
         snakeTwo.direction = left;
+        blueSnakeHead.setAttribute('src', 'sprites/blue-snake-head-left.gif');
     }
     else if (event.keyCode === d && snakeTwo.direction != left) {
         snakeTwo.direction = right;
+        blueSnakeHead.setAttribute('src', 'sprites/blue-snake-head-right.gif');
     }
     // pause game
     else if (event.keyCode === spacebar) {
