@@ -1,7 +1,55 @@
+/*--------------------------------------------------------------------
+//////////////////////////////////////////////////////////////////////
+----------------------------------------------------------------------
+                        Chris' Snake Game
+----------------------------------------------------------------------
+//////////////////////////////////////////////////////////////////////
+--------------------------------------------------------------------*/
+
+
 // accessing the canvas
 let ctx = document.getElementById('ctx').getContext('2d');
 let blueGamesWon = document.getElementById('blue-gamesWon');
 let orangeGamesWon = document.getElementById('orange-gamesWon');
+
+/*--------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                        Create Sprites
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------------------------------------------*/
+
+let greenFastFood = document.createElement('img');
+greenFastFood.setAttribute('id', 'fastFood');
+greenFastFood.setAttribute('src', 'fast-food-3.png');
+document.body.appendChild(greenFastFood);
+
+let redSlowFood = document.createElement('img');
+redSlowFood.setAttribute('id', 'slowFood');
+redSlowFood.setAttribute('src', 'slow-food-3.png');
+// redSlowFood.setAttribute('style', 'display: none');
+document.body.appendChild(redSlowFood);
+console.log(redSlowFood);
+
+let orangeSnakeBody = document.createElement('img');
+orangeSnakeBody.setAttribute('id', 'orangeSnakeBody');
+orangeSnakeBody.setAttribute('src', 'orange-snake-body.gif');
+document.body.appendChild(orangeSnakeBody);
+
+let orangeSnakeHead = document.createElement('img');
+orangeSnakeHead.setAttribute('id', 'orangeSnakeHead');
+orangeSnakeHead.setAttribute('src', 'orange-snake-head.gif');
+document.body.appendChild(orangeSnakeHead);
+
+let blueSnakeBody = document.createElement('img');
+blueSnakeBody.setAttribute('id', 'blueSnakeBody');
+blueSnakeBody.setAttribute('src', 'blue-snake-body.gif');
+document.body.appendChild(blueSnakeBody);
+
+let blueSnakeHead = document.createElement('img');
+blueSnakeHead.setAttribute('id', 'blueSnakeHead');
+blueSnakeHead.setAttribute('src', 'blue-snake-head.gif');
+document.body.appendChild(blueSnakeHead);
+
 
 /*--------------------------------------------------------------------
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -18,6 +66,11 @@ let ctxHeight = document.getElementById('ctx').height;
 ctx.font = '20px Calibri';
 ctx.fillText('Click to start the game', 140, 250);
 
+// window.onload = () => {
+//     ctx.drawImage(greenFastFood, 200, 200, 20, 20);
+// }
+
+
 //////////////////////////////////////////////////////////////////////
 //Create Game Objects
 //////////////////////////////////////////////////////////////////////
@@ -27,7 +80,7 @@ const game = {
     isPaused: false,
     intervalVar: null,
     interval: null,
-    goal: 5
+    goal: 50
 }
 
 class Snake {
@@ -165,38 +218,40 @@ const snakeCollideAnotherHead = (snakeHead, snakeAnotherHead) => {
 const drawSnakeOne = (snakeObj, i) => { // snakeObj is snake object, i is the index of the array (i.e. other parts of the snake)
     ctx.save(); //saves state of canvas
     if (i === 0) {
-        ctx.fillStyle = 'black'; // create different colour for snakeObj head
+        // ctx.fillStyle = 'black'; // create different colour for snakeObj head
+        // ctx.fillRect(snakeObj.x, snakeObj.y, snakeTwo.width, snakeTwo.height);
+        ctx.drawImage(orangeSnakeHead, snakeObj.x, snakeObj.y, snakeOne.width, snakeOne.height);
     }
     else {
-        ctx.fillStyle = snakeOne.color;
+        ctx.drawImage(orangeSnakeBody, snakeObj.x, snakeObj.y, snakeOne.width, snakeOne.height);
     }
-    ctx.fillRect(snakeObj.x, snakeObj.y, snakeOne.width, snakeOne.height); // draw the rectangle
     ctx.restore(); //restores state of canvas
 }
 
 const drawSnakeTwo = (snakeObj, i) => { // snakeObj is snake object, i is the index of the array (i.e. other parts of the snake)
     ctx.save(); //saves state of canvas
     if (i === 0) {
-        ctx.fillStyle = 'black'; // create different colour for snakeObj head
+        ctx.drawImage(blueSnakeHead, snakeObj.x, snakeObj.y, snakeOne.width, snakeOne.height);
     }
     else {
-        ctx.fillStyle = snakeTwo.color;
+        ctx.drawImage(blueSnakeBody, snakeObj.x, snakeObj.y, snakeOne.width, snakeOne.height);
     }
-    ctx.fillRect(snakeObj.x, snakeObj.y, snakeTwo.width, snakeTwo.height); // draw the rectangle
+    // ctx.fillRect(snakeObj.x, snakeObj.y, snakeTwo.width, snakeTwo.height); // draw the rectangle
     ctx.restore(); //restores state of canvas
 }
 
 const drawFastFood = () => {
     ctx.save();
     ctx.fillStyle = fastFood.color;
-    ctx.fillRect(fastFood.items[0].x, fastFood.items[0].y, fastFood.width, fastFood.height);
+    // ctx.fillRect(fastFood.items[0].x, fastFood.items[0].y, fastFood.width, fastFood.height);
+    ctx.drawImage(greenFastFood, fastFood.items[0].x, fastFood.items[0].y, fastFood.width, fastFood.height);
     ctx.restore();
 }
 
 const drawSlowFood = () => {
     ctx.save();
     ctx.fillStyle = slowFood.color;
-    ctx.fillRect(slowFood.items[0].x, slowFood.items[0].y, slowFood.width, slowFood.height);
+    ctx.drawImage(redSlowFood, slowFood.items[0].x, slowFood.items[0].y, slowFood.width, slowFood.height);
     ctx.restore();
 }
 
