@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+/*font-family: 'Josefin Sans', sans-serif;*/
 
 /** {
 	border: 1px solid gold;
 }*/
+
+html {
+	background: url(images/dark-green-header-1072179.jpg) no-repeat center center fixed;
+	background-size: cover;
+}
 
 body {
 	font-family: 'Montserrat', sans-serif;
@@ -22,7 +30,7 @@ th {
 	font-family: Arial, sans-serif;
 	font-size: 14px;
 	font-weight: normal;
-	padding:10px 5px;
+	padding: 2px 2px;
 	border-style:solid;
 	border-width:1px;
 	overflow:hidden;
@@ -35,7 +43,7 @@ th {
 td {
 	font-family: Arial, sans-serif;
 	font-size: 14px;
-	padding: 10px 5px;
+	padding: 2px 2px;
 	border-style: solid;
 	border-width: 1px;
 	overflow: hidden;
@@ -49,14 +57,65 @@ td {
 	background-color: #eee8d5
 }
 
-/*#left {
-	float: left;
-}
-
-#right {
-	float: right;
-}
-
-#canvas-game {
-	float: left;
+/*#main {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
 }*/
+
+h3 {
+	margin-top: -20px;
+}
+
+#top {
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+}
+
+#top-left {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	background-color: #eeeeee;
+}
+
+#top-right {
+/*	grid-column-start: 3;
+	grid-column-end: 4;*/
+	background-color: #dddddd;
+}
+
+#bottom {
+	display: grid;
+	grid-template-columns: 33% 34% 33%;
+}
+
+#intro-img-container {
+	height: 400px;
+	width: 400px;
+	background-color: white;
+	margin: 0 auto;
+	margin-top: 150px;
+}
+
+#play-now {
+	padding: 30px 80px;
+	background-color: rgba(0, 136,169, 1);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+	color: white;
+	margin-top: 25px;
+	font-size: 28px;
+	font-family: 'Press Start 2P', cursive;
+	-webkit-box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
+	-moz-box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
+	box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
+}
+
+#play-now:hover {
+	background-color: rgba(255, 204, 51, 0.8);
+}
+
+#instructions {
+	color: white;
+}

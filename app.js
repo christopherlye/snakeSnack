@@ -546,8 +546,8 @@ const updateScreen = () => {
         snakeEatSlowFood(snakeTwo, snakeOne);
 
         // update score board
-        ctx.fillText(`Orange: ${snakeOne.score}`, 410, 30);
-        ctx.fillText(`Blue: ${snakeTwo.score}`, 10, 30);
+        // ctx.fillText(`Orange: ${snakeOne.score}`, 410, 30);
+        // ctx.fillText(`Blue: ${snakeTwo.score}`, 10, 30);
         orangeGamesWon.innerText = snakeOne.gamesWon;
         blueGamesWon.innerText = snakeTwo.gamesWon;
 
@@ -567,6 +567,10 @@ const updateScreen = () => {
         moveSnake(snakeOne); // update the x and y coordinates of the snake based on the user input
         moveSnake(snakeTwo); // update the x and y coordinates of the snake based on the user input
         // console.log(game.intervalVar);
+
+        // update snake current score on scoreboard
+        document.getElementById('orange-currentScore').innerText = snakeOne.score;
+        document.getElementById('blue-currentScore').innerText = snakeTwo.score;
     }
     else {
         // no updating of items / movements if game is paused

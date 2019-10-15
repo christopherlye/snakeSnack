@@ -1,41 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My First Canvas</title>
+    <title>Snake Snack</title>
     <script type="text/javascript" src="app.js" defer></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 </head>
 <body>
-    <div id="container">
-        <div id="left">
-            <h1>Snake Snack</h1>
-            <h3>Eat it well, eat it right</h3>
-        </div>
-        <div id="right">
-            <table id="score-board">
-                <tr>
-                    <th colspan="2">Score Board</th>
-                </tr>
-                <tr>
-                    <td>Player</td>
-                    <td>Game Wins</td>
-                </tr>
-                <tr>
-                    <td class="shade">Orange Snake</td>
-                    <td id="orange-gamesWon" class="shade">0</td>
-                </tr>
-                <tr>
-                    <td>Blue Snake</td>
-                    <td id="blue-gamesWon">0</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <br/>
-    <div id="canvas-game">
-        <canvas id="ctx" width="500" height="500" style="border:1px solid #000000; background-color: #fff6cc"></canvas>
-    </div>
+    <div id="main">
+        <div id="top">
+            <div id="top-left">
+                <h1>Snake Snack</h1>
+                <h3>Eat it well, eat it right</h3>
+            </div>
+            <div id="top-right">
 
+            </div>
+        </div>
+        <br/>
+        <div id="bottom">
+            <div id="instructions">
+                <h5>Instructions</h6>
+                <h6>Green</h6>
+                <ul>
+                    <li>+1 your point</li>
+                    <li>+1 your snake length</li>
+                    <li>+1 your speed</li>
+                    <li>+1 game speed</li>
+                </ul>
+                <h6>Red</h6>
+                <ul>
+                    <li>+5 opponent's point</li>
+                    <li>+7 opponent's snake length</li>
+                    <li>-1 your speed</li>
+                    <li>-1 game speed</li>
+                </ul>
+            </div>
+            <div id="canvas-game">
+                <canvas id="ctx" width="500" height="500" style="border:1px solid #000000; background-color: #fff6cc"></canvas>
+            </div>
+            <div id="bottom-right">
+                <table id="score-board">
+                    <tr>
+                        <th colspan="3">Score Board</th>
+                    </tr>
+                    <tr>
+                        <td>Player</td>
+                        <td class="shade">Current Score</td>
+                        <td>Game Wins</td>
+                    </tr>
+                    <tr>
+                        <td>Orange Snake</td>
+                        <td id="orange-currentScore" class="shade">0</td>
+                        <td id="orange-gamesWon">0</td>
+                    </tr>
+                    <tr>
+                        <td>Blue Snake</td>
+                        <td id="blue-currentScore" class="shade">0</td>
+                        <td id="blue-gamesWon">0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
