@@ -1,0 +1,32 @@
+#intro-img-container {
+	height: 500px;
+	width: 500px;
+	background-color: white;
+	margin: 0 auto;
+	margin-top: 100px;
+}
+
+#play-now {
+	padding: 28px 80px;
+	background-color: rgba(0, 136,169, 1);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+	color: white;
+	margin-top: 25px;
+	font-size: 24px;
+	font-family: 'Press Start 2P', cursive;
+	-webkit-box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
+	-moz-box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
+	box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
+}
+
+#play-now:hover {
+	background-color: rgba(255, 204, 51, 0.8);
+}
+
+#instructions {
+	color: white;
+	text-align: left;
+}

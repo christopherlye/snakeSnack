@@ -1,0 +1,17 @@
+            <div id="instructions">
+                <h5>Instructions</h6>
+                <h6>Green</h6>
+                <ul>
+                    <li>+1 your point</li>
+                    <li>+1 your snake length</li>
+                    <li>+1 your speed</li>
+                    <li>+1 game speed</li>
+                </ul>
+                <h6>Red</h6>
+                <ul>
+                    <li>+5 opponent's point</li>
+                    <li>+7 opponent's snake length</li>
+                    <li>-1 your speed</li>
+                    <li>-1 game speed</li>
+                </ul>
+            </div>
