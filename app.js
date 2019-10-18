@@ -80,7 +80,8 @@ const game = {
     isPaused: false,
     intervalVar: null,
     interval: null,
-    goal: 50
+    goal: 50,
+    gamesToWin: 1
 }
 
 class Snake {
@@ -151,6 +152,19 @@ document.getElementById('ctx').onmousedown = () => {
         fastFood.items = [];
     }
     startGame();
+}
+
+
+// reset game event
+document.getElementById('reset-game').onmousedown = () => {
+    let userInput = confirm('Are you sure you want to reset the game?');
+    if (userInput) {
+        window.scrollTo(0, 0);
+        setTimeout(() => {location.reload();}, 1000);
+    }
+    else {
+        return;
+    }
 }
 
 
@@ -475,8 +489,8 @@ const selfCollision = (snakeObj1, snakeObj2) => {
         if (snakeCollideItself(snakeObj1.parts[0], snakeObj1.parts[i])) {
             snakeObj2.gamesWon += 1;
             clearInterval(game.interval);
-            ctx.fillText(`${snakeObj2.name} wins!`, 150, 220);
-            ctx.fillText(`Click here for a new round!`, 100, 250);
+            ctx.fillText(`${snakeObj2.name} wins the round!`, 150, 220);
+            // ctx.fillText(`Click here for a new round!`, 100, 250);
             return;
         }
     }
@@ -486,7 +500,7 @@ const collideAnother = (snakeObj1, snakeObj2) => {
     if (snakeCollideAnotherHead(snakeObj1.parts[0], snakeObj2.parts[0])) {
         clearInterval(game.interval);
         ctx.fillText(`It's a tie!`, 190, 220);
-        ctx.fillText(`Click here for a new round!`, 100, 250);
+        // ctx.fillText(`Click here for a new round!`, 100, 250);
         return;
     }
         // snake head collide with part any part of other snake's body
@@ -495,25 +509,50 @@ const collideAnother = (snakeObj1, snakeObj2) => {
             if (snakeCollideAnotherBody(snakeObj1.parts[0], snakeObj2.parts[i])) {
                 snakeObj2.gamesWon += 1;
                 clearInterval(game.interval);
-                ctx.fillText(`${snakeObj2.name} wins!`, 150, 220);
-                ctx.fillText(`Click here for a new round!`, 100, 250);
+                ctx.fillText(`${snakeObj2.name} wins the round!`, 150, 220);
+                // ctx.fillText(`Click here for a new round!`, 100, 250);
                 return;
             }
         }
     }
 }
 
-const checkScore = (snakeObj1, snakeObj2) => {
-    if (snakeObj1.score  >= game.goal) {
+// const checkScore = (snakeObj1, snakeObj2) => {
+//     if (snakeObj1.score  >= game.goal) {
+//         snakeObj1.gamesWon += 1;
+//         clearInterval(game.interval);
+//         ctx.fillText(`${snakeObj1.name} wins the round!`, 150, 250);
+//         return;
+//     }
+//     else if (snakeObj2.score >= game.goal) {
+//         snakeObj2.gamesWon += 1;
+//         clearInterval(game.interval);
+//         ctx.fillText(`${snakeObj2.name} wins the round!`, 150, 250);
+//         return;
+//     }
+// }
+
+const checkWins = (snakeObj1, snakeObj2) => {
+    if (snakeObj1.gamesWon === game.gamesToWin) {
+        clearInterval(game.interval);
+        ctx.fillText(`${snakeObj1.name} is the winner!`, 150, 250);
+        return;
+    }
+    else if (snakeObj2.gamesWon === game.gamesToWin) {
+        clearInterval(game.interval);
+        ctx.fillText(`${snakeObj2.name} is the winner!`, 150, 250);
+        return;
+    }
+    else if (snakeObj1.score  >= game.goal) {
         snakeObj1.gamesWon += 1;
         clearInterval(game.interval);
-        ctx.fillText(`${snakeObj1.name} wins!`, 150, 250);
+        ctx.fillText(`${snakeObj1.name} wins the round!`, 150, 250);
         return;
     }
     else if (snakeObj2.score >= game.goal) {
         snakeObj2.gamesWon += 1;
         clearInterval(game.interval);
-        ctx.fillText(`${snakeObj2.name} wins!`, 150, 250);
+        ctx.fillText(`${snakeObj2.name} wins the round!`, 150, 250);
         return;
     }
 }
@@ -569,11 +608,17 @@ const updateScreen = () => {
 
 
         // check game over
-        selfCollision(snakeOne, snakeTwo);
-        selfCollision(snakeTwo, snakeOne);
-        checkScore(snakeOne, snakeTwo);
-        collideAnother(snakeOne, snakeTwo);
-        collideAnother(snakeTwo, snakeOne);
+
+        if (snakeOne.gamesWon === game.gamesToWin || snakeTwo.gamesWon === game.gamesToWin) {
+            checkWins(snakeOne, snakeTwo);
+        }
+        else {
+            selfCollision(snakeOne, snakeTwo);
+            selfCollision(snakeTwo, snakeOne);
+            // checkScore(snakeOne, snakeTwo);
+            collideAnother(snakeOne, snakeTwo);
+            collideAnother(snakeTwo, snakeOne);
+        }
 
         // check if snake is out of canvas, regenerate on other side if true
         checkSnakePosition(snakeOne);
