@@ -25,7 +25,7 @@ body {
 #section1 {
 	height: 900px;
 	width: 100%;
-	background: url(../images/dark-green-header-1072179.jpg) no-repeat center center;
+	background: url('../images/dark-green-header-1072179 (w).jpg') no-repeat center center;
 	background-size: cover;
 	position: absolute;
 	top: 0px;
@@ -71,7 +71,7 @@ a {
 #section2 {
 	height: 900px;
 	width: 100%;
-	background: url('../images/color-cool-wallpaper-dark-green-808510 (2).jpg') no-repeat center center;
+	background: url('../images/color-cool-wallpaper-dark-green-808510 (w).jpg') no-repeat center center;
 	background-size: cover;
 	position: absolute;
 	margin-top: 900px;
@@ -156,7 +156,7 @@ p {
 #section3 {
 	height: 900px;
 	width: 100%;
-	background: url('../images/color-cool-wallpaper-dark-green-808510 (1).jpg') no-repeat center center;
+	background: url('../images/color-cool-wallpaper-dark-green-808510 (w2).jpg') no-repeat center center;
 	background-size: cover;
 	background-color: black;
 	position: absolute;
@@ -242,7 +242,7 @@ p {
 }
 
 #reset-game {
-	margin: 5px auto;
+	margin: 15px auto;
 	text-align: center;
 	display: block;
 	padding: 28px 80px;

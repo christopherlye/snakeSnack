@@ -81,7 +81,7 @@ const game = {
     intervalVar: null,
     interval: null,
     goal: 50,
-    roundsToWin: 1
+    roundsToWin: 3
 }
 
 class Snake {
@@ -480,7 +480,7 @@ const startGame = () => {
     snakeTwo.speed = 5;
     game.isRunning = true;
     game.isPaused = false;
-    game.intervalVar = 30;
+    game.intervalVar = 30 - (snakeOne.roundsWon + snakeTwo.roundsWon) * 4;
     game.interval = setInterval(updateScreen, game.intervalVar);
 }
 
@@ -554,6 +554,7 @@ const checkWins = (snakeObj1, snakeObj2) => {
     }
     else if (snakeObj2.score >= game.goal) {
         snakeObj2.roundsWon += 1;
+
         clearInterval(game.interval);
         ctx.fillText(`${snakeObj2.name} wins the round!`, 100, 250);
         document.getElementById('winning-sound').play();
@@ -614,7 +615,7 @@ const updateScreen = () => {
 
         // check game over
 
-        if (snakeOne.roundsWon === game.roundsToWin || snakeTwo.roundsWon === game.roundsToWin) {
+        if (snakeOne.score >= game.goal || snakeTwo.score >= game.goal || snakeOne.roundsWon === game.roundsToWin || snakeTwo.roundsWon === game.roundsToWin) {
             checkWins(snakeOne, snakeTwo);
         }
         else {
