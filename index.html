@@ -34,22 +34,58 @@
         </div>
         <div id="contains-three">
             <div id="left-outer">
-                <div id="left-inner">
-                    <div id="left-name"></div>
-                    <div id="left-score"></div>
-                    <div id="left-games-won"></div>
+                <div id="left-inner" class="inner">
+                    <div id="left-name" class="name">
+                        <h3 id="blue-snake">Blue<br/>Snake</h3>
+                    </div>
+                    <div id="left-score" class="score">
+                        <h5>Score</h5>
+                        <div class="both-scores">
+                            <h2 id="blue-currentScore">0</h2>
+                        </div>
+                    </div>
+                    <div id="left-games-won" class="games-won">
+                        <h5>Games Won</h5>
+                        <h3 id="blue-gamesWon" class="both-games-won">0</h3>
+                    </div>
+<!--                     <div id="left-keys" class="keys">
+                        <ul id="left-keys-ul">
+                            <li>Up: W</li>
+                            <li>Down: S</li>
+                            <li>Left: A</li>
+                            <li>Right: D</li>
+                        </ul>
+                    </div> -->
                 </div>
             </div>
             <div id="mid-outer">
                 <div id="canvas-game">
-                    <canvas id="ctx" width="500" height="500" style="border:1px solid #000000; background-color: #fff6cc"></canvas>
+                    <canvas id="ctx" width="500" height="500"></canvas>
                 </div>
             </div>
             <div id="right-outer">
-                <div id="right-inner">
-                    <div id="right-name"></div>
-                    <div id="right-score"></div>
-                    <div id="right-games-won"></div>
+                <div id="right-inner" class="inner">
+                    <div id="right-name" class="name">
+                        <h3 id="orange-snake">Orange Snake</h3>
+                    </div>
+                    <div id="right-score" class="score">
+                        <h5>Score</h5>
+                        <div class="both-scores">
+                            <h2 id="orange-currentScore">0</h2>
+                        </div>
+                    </div>
+                    <div id="right-games-won" class="games-won">
+                        <h5>Games Won</h5>
+                        <h3 id="orange-gamesWon" class="both-games-won">0</h3>
+                    </div>
+<!--                     <div id="right-keys" class="keys">
+                        <ul id="right-keys-ul">
+                            <li>Up: &uarr;</li>
+                            <li>Down: &darr;</li>
+                            <li>Left: &larr;</li>
+                            <li>Right: &rarr;</li>
+                        </ul>
+                    </div> -->
                 </div>
             </div>
         </div>

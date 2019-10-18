@@ -12,6 +12,11 @@
 	background-size: cover;
 }*/
 
+#ctx {
+	background-color: #222222;
+	border: 1px solid #ffffff;
+}
+
 body {
 	font-family: 'Montserrat', sans-serif;
 }
@@ -162,17 +167,81 @@ p {
 	grid-template-columns: 1fr 1fr 1fr;
 }
 
+.inner {
+	display: grid;
+	grid-template-rows: 1fr 2fr 1fr;
+	margin-top: 50px;
+}
 
+.name, .score, .games-won, .keys {
+	width: 50%;
+	height: 80px;
+	background-color: white;
+	font-family: 'Press Start 2P', cursive;
+	text-align: center;
+	margin: 0 auto;
+}
 
+.name {
+	/*width: 100%;*/
+	color: white;
+	font-size: 20px;
+	/*margin-top: -10px;*/
+	border-radius: 20px;
+}
 
+.score {
+	height: 150px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	margin-top: -10px;
+	/*border: 10px solid black;*/
+	/*margin-top: 10px;*/
+}
 
+.games-won {
+	/*border: 5px solid black;*/
+	margin-top: 10px;
+	border-radius: 20px;
+}
+
+.keys {
+	border-radius: 0 0 20px 20px;
+}
+
+#left-name {
+	/*background-color: rgba(255, 204, 51, 1);*/
+	background-color: rgba(0, 136,169, 1);
+	text-shadow: 3px 3px 5px #006d87;
+	border-radius: 20px 20px 0 0;
+}
+
+#right-name {
+	background-color: rgba(255, 204, 51, 1);
+	text-shadow: 3px 3px 5px #cca329;
+	border-radius: 20px 20px 0 0;
+}
+
+#mid-outer {
+	margin-top: 25px;
+}
+
+#left-keys-ul, #right-keys-ul {
+	list-style: none;
+	margin-left: -50px;
+	font-size: 12px;
+}
+
+.both-games-won {
+	margin-top: -10px;
+}
 
 #reset-game {
-	margin: 25px auto;
+	margin: 5px auto;
 	text-align: center;
 	display: block;
 	padding: 28px 80px;
-	background-color: rgba(0, 136,169, 1);
+	background-color: rgba(0, 83, 169, 1);
 	border: none;
 	border-radius: 50px;
 	cursor: pointer;
@@ -188,8 +257,10 @@ p {
 }
 
 #reset-game:hover {
-	background-color: rgba(255, 204, 51, 0.8);
+	background-color: rgba(0, 13, 169, 0.9);
 }
+
+/*https://live.staticflickr.com/3125/2568930214_666207f1d7.jpg*/
 
 /*#section4 {
 	height: 900px;

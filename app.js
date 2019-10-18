@@ -75,7 +75,7 @@ document.body.appendChild(blueSnakeHead);
 
 let ctxWidth = document.getElementById('ctx').width;
 let ctxHeight = document.getElementById('ctx').height;
-ctx.font = '20px Calibri';
+ctx.font = '20px georgia';
 ctx.fillStyle = 'green';
 ctx.fillText('Click to start the game', 140, 250);
 
@@ -570,8 +570,8 @@ const updateScreen = () => {
         // console.log(game.intervalVar);
 
         // update snake current score on scoreboard
-        // document.getElementById('orange-currentScore').innerText = snakeOne.score;
-        // document.getElementById('blue-currentScore').innerText = snakeTwo.score;
+        document.getElementById('orange-currentScore').innerText = snakeOne.score;
+        document.getElementById('blue-currentScore').innerText = snakeTwo.score;
     }
     else {
         // no updating of items / movements if game is paused
