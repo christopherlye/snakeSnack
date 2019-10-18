@@ -7,10 +7,9 @@
 	border: 1px solid gold;
 }*/
 
-/*html {
-	background: url(../images/dark-green-header-1072179.jpg) no-repeat center center fixed;
-	background-size: cover;
-}*/
+html {
+	scroll-behavior: smooth;
+}
 
 #ctx {
 	background-color: #111111;
@@ -132,7 +131,7 @@ p {
 	text-align: center;
 	display: block;
 	padding: 28px 80px;
-	background-color: rgba(255, 204, 51, 1);
+	background-color: rgba(255, 204, 51, 0.8);
 	border: none;
 	border-radius: 50px;
 	cursor: pointer;
@@ -148,7 +147,7 @@ p {
 }
 
 #start-game:hover {
-	background-color: rgba(0, 136, 169, 0.8);
+	background-color: rgba(0, 136, 169, 1);
 }
 
 #section3 {
@@ -244,7 +243,7 @@ p {
 	text-align: center;
 	display: block;
 	padding: 28px 80px;
-	background-color: rgba(0, 83, 169, 1);
+	background-color: rgba(0, 83, 169, 0.7);
 	border: none;
 	border-radius: 50px;
 	cursor: pointer;
@@ -260,7 +259,7 @@ p {
 }
 
 #reset-game:hover {
-	background-color: rgba(0, 13, 169, 0.9);
+	background-color: rgba(0, 83, 169, 1);
 }
 
 /*https://live.staticflickr.com/3125/2568930214_666207f1d7.jpg*/

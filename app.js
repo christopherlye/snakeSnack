@@ -154,6 +154,15 @@ document.getElementById('ctx').onmousedown = () => {
 }
 
 
+// scroll events
+document.getElementById('play-now').onmousedown = () => {
+    window.scrollTo(0, 940);
+}
+
+document.getElementById('start-game').onmousedown = () => {
+    window.scrollTo(0, 1880);
+}
+
 // keyboard events
 document.onkeydown = (event) => {
 
@@ -200,7 +209,7 @@ document.onkeydown = (event) => {
             game.isPaused = true;
         }
     }
-    // event.preventDefault();
+    event.preventDefault(); // prevents directional arrow keys from interfering with window scroll by removing default function
 }
 
 //////////////////////////////////////////////////////////////////////
