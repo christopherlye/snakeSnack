@@ -69,19 +69,6 @@ document.body.appendChild(blueSnakeHead);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 --------------------------------------------------------------------*/
 
-//////////////////////////////////////////////////////////////////////
-//Global variables
-//////////////////////////////////////////////////////////////////////
-
-let ctxWidth = document.getElementById('ctx').width;
-let ctxHeight = document.getElementById('ctx').height;
-ctx.font = '20px georgia';
-ctx.fillStyle = 'green';
-ctx.fillText('Click to start the game', 140, 250);
-
-// window.onload = () => {
-//     ctx.drawImage(greenFastFood, 200, 200, 20, 20);
-// }
 
 
 //////////////////////////////////////////////////////////////////////
@@ -125,6 +112,22 @@ class Food {
 
 const fastFood = new Food('green');
 const slowFood = new Food('red');
+
+
+//////////////////////////////////////////////////////////////////////
+//Global variables
+//////////////////////////////////////////////////////////////////////
+
+let ctxWidth = document.getElementById('ctx').width;
+let ctxHeight = document.getElementById('ctx').height;
+ctx.font = '20px courier';
+ctx.fillStyle = 'green';
+ctx.fillText('Click here to start the game', 80, 250);
+ctx.fillText(`Goal: ${game.goal} points`, 170, 220);
+
+// window.onload = () => {
+//     ctx.drawImage(greenFastFood, 200, 200, 20, 20);
+// }
 
 
 //////////////////////////////////////////////////////////////////////
@@ -277,11 +280,11 @@ const drawSlowFood = () => {
     ctx.restore();
 }
 
-const drawGoal = () => {
-    ctx.save();
-    ctx.fillStyle = 'black';
-    ctx.fillText(`Goal: ${game.goal} points`, 190, 30);
-}
+// const drawGoal = () => {
+//     ctx.save();
+//     ctx.fillStyle = 'green';
+//     ctx.fillText(`Goal: ${game.goal} points`, 170, 30);
+// }
 
 //////////////////////////////////////////////////////////////////////
 //Move snake
@@ -463,7 +466,8 @@ const selfCollision = (snakeObj1, snakeObj2) => {
         if (snakeCollideItself(snakeObj1.parts[0], snakeObj1.parts[i])) {
             snakeObj2.gamesWon += 1;
             clearInterval(game.interval);
-            ctx.fillText(`Game Over! ${snakeObj2.name} wins!`, 150, 250);
+            ctx.fillText(`${snakeObj2.name} wins!`, 150, 220);
+            ctx.fillText(`Click here for a new round!`, 100, 250);
             return;
         }
     }
@@ -472,7 +476,8 @@ const selfCollision = (snakeObj1, snakeObj2) => {
 const collideAnother = (snakeObj1, snakeObj2) => {
     if (snakeCollideAnotherHead(snakeObj1.parts[0], snakeObj2.parts[0])) {
         clearInterval(game.interval);
-        ctx.fillText(`Game Over! It's a tie!`, 150, 250);
+        ctx.fillText(`It's a tie!`, 190, 220);
+        ctx.fillText(`Click here for a new round!`, 100, 250);
         return;
     }
         // snake head collide with part any part of other snake's body
@@ -481,7 +486,8 @@ const collideAnother = (snakeObj1, snakeObj2) => {
             if (snakeCollideAnotherBody(snakeObj1.parts[0], snakeObj2.parts[i])) {
                 snakeObj2.gamesWon += 1;
                 clearInterval(game.interval);
-                ctx.fillText(`Game Over! ${snakeObj2.name} wins!`, 150, 250);
+                ctx.fillText(`${snakeObj2.name} wins!`, 150, 220);
+                ctx.fillText(`Click here for a new round!`, 100, 250);
                 return;
             }
         }
@@ -534,7 +540,7 @@ const updateScreen = () => {
         // draw objects
         fastFood.items.forEach(drawFastFood); // for each fastFood item, draw it on the screen
         slowFood.items.forEach(drawSlowFood); // for each slowFood item, draw it on the screen
-        drawGoal();
+        // drawGoal();
 
         // draw snakes
         snakeOne.parts.forEach(drawSnakeOne); // for each part of the snake, draw it on the screen
@@ -549,8 +555,8 @@ const updateScreen = () => {
         // update score board
         // ctx.fillText(`Orange: ${snakeOne.score}`, 410, 30);
         // ctx.fillText(`Blue: ${snakeTwo.score}`, 10, 30);
-        // orangeGamesWon.innerText = snakeOne.gamesWon;
-        // blueGamesWon.innerText = snakeTwo.gamesWon;
+        orangeGamesWon.innerText = snakeOne.gamesWon;
+        blueGamesWon.innerText = snakeTwo.gamesWon;
 
 
         // check game over

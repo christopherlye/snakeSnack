@@ -3,9 +3,9 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 /*font-family: 'Josefin Sans', sans-serif;*/
 
-* {
+/** {
 	border: 1px solid gold;
-}
+}*/
 
 /*html {
 	background: url(../images/dark-green-header-1072179.jpg) no-repeat center center fixed;
@@ -13,8 +13,9 @@
 }*/
 
 #ctx {
-	background-color: #222222;
-	border: 1px solid #ffffff;
+	background-color: #111111;
+	border: 5px solid #ffffff;;
+	margin: 20px auto;
 }
 
 body {
@@ -153,7 +154,7 @@ p {
 #section3 {
 	height: 900px;
 	width: 100%;
-	background: url(../images/conifer-day-design-1028223.jpg) no-repeat center center;
+	background: url(../images/color-cool-wallpaper-dark-green-808510.jpg) no-repeat center center;
 	background-size: cover;
 	background-color: black;
 	position: absolute;
@@ -164,7 +165,7 @@ p {
 
 #contains-three {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 2fr 1fr;
 }
 
 .inner {
@@ -223,7 +224,9 @@ p {
 }
 
 #mid-outer {
-	margin-top: 25px;
+	/*margin-top: 25px;*/
+	background-color: black;
+	text-align: center;
 }
 
 #left-keys-ul, #right-keys-ul {
