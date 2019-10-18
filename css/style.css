@@ -3,9 +3,9 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 /*font-family: 'Josefin Sans', sans-serif;*/
 
-* {
+/** {
 	border: 1px solid gold;
-}
+}*/
 
 /*html {
 	background: url(../images/dark-green-header-1072179.jpg) no-repeat center center fixed;
@@ -20,12 +20,12 @@ body {
 #section1 {
 	height: 900px;
 	width: 100%;
-	/*background-color: rgba(255, 0, 0, 1);*/
 	background: url(../images/dark-green-header-1072179.jpg) no-repeat center center;
 	background-size: cover;
 	position: absolute;
 	top: 0px;
 	left: 0px;
+	/*display: none;*/
 }
 
 #intro-img {
@@ -64,7 +64,8 @@ a {
 #section2 {
 	height: 900px;
 	width: 100%;
-	background-color: black;
+	background: url(../images/color-conifer-environment-192136.jpg) no-repeat center center;
+	background-size: cover;
 	position: absolute;
 	margin-top: 900px;
 	top: 0px;
@@ -74,30 +75,56 @@ a {
 #instructions {
 	color: white;
 	text-align: center;
-	margin-top: 100px;
+	margin-top: 120px;
 	font-family: 'Press Start 2P', cursive;
 	text-transform: uppercase;
+	text-shadow: 5px 5px 1px rgba(0, 0, 0, 1);
+	font-size: 24px;
 }
 
 #instructions-outer-container {
 	height: 500px;
 	width: 750px;
-	background-color: white;
-	margin: 50px auto 0px auto;
+	background-color: black;
+	margin: 20px auto 0px auto;
 }
 
 #instructions-inner-container {
-	height: 450px;
+	color: white;
+	height: 400px;
 	width: 650px;
-	background-color: gray;
+	background-color: black;
 	margin: 20px auto 0px auto;
 	text-align: center;
 	font-family: 'Press Start 2P', cursive;
+	overflow: scroll;
+	border: 5px solid white;
 }
 
 #objective {
-	margin-top: 60px;
+	margin-top: 20px;
+	color: rgba(255, 204, 51, 1);
 }
+
+#the-catch {
+	color: rgba(255, 204, 51, 1);
+}
+
+#how-to-score, #note {
+	color: rgba(0, 136,169, 1);
+}
+
+p {
+	line-height: 180%;
+}
+/*
+.green-sweet {
+	color: lawngreen;
+}
+
+.red-sweet {
+	color: red;
+}*/
 
 #start-game {
 	margin: 25px auto;
