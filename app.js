@@ -160,7 +160,7 @@ document.getElementById('reset-game').onmousedown = () => {
     let userInput = confirm('Are you sure you want to reset the game?');
     if (userInput) {
         window.scrollTo(0, 0);
-        setTimeout(() => {location.reload();}, 1000);
+        setTimeout(() => {location.reload();}, 800);
     }
     else {
         return;
@@ -464,8 +464,8 @@ const snakeEatSlowFood = (snakeObj, otherSnakeObj) => {
 //////////////////////////////////////////////////////////////////////
 
 const startGame = () => {
-    snakeOne.parts = [{x: 450, y: 45},{x: 460, y: 45},{x: 470, y: 45}]; // head body tail
-    snakeTwo.parts = [{x: 30, y: 45},{x: 20, y: 45},{x: 10, y: 45}];
+    snakeOne.parts = [{x: 450, y: 50},{x: 460, y: 50},{x: 470, y: 50}]; // head body tail
+    snakeTwo.parts = [{x: 30, y: 450},{x: 20, y: 450},{x: 10, y: 450}];
     snakeOne.score = 0;
     snakeTwo.score = 0;
     snakeOne.speed = 5;
