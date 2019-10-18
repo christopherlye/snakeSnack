@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Snake Snack</title>
+    <title>Snake Snack © | Chris Lye</title>
     <script type="text/javascript" src="app.js" defer></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="icon" href="images/snake-snack-favicon-1.png" type="image/gif" sizes="16x16">
 </head>
 <body>
     <div id="section1">
@@ -45,9 +46,9 @@
                             <h2 id="blue-currentScore">0</h2>
                         </div>
                     </div>
-                    <div id="left-games-won" class="games-won">
-                        <h5>Games Won</h5>
-                        <h3 id="blue-gamesWon" class="both-games-won">0</h3>
+                    <div id="left-rounds-won" class="rounds-won">
+                        <h5>Rounds Won</h5>
+                        <h3 id="blue-roundsWon" class="both-rounds-won">0</h3>
                     </div>
                 </div>
             </div>
@@ -67,9 +68,9 @@
                             <h2 id="orange-currentScore">0</h2>
                         </div>
                     </div>
-                    <div id="right-games-won" class="games-won">
-                        <h5>Games Won</h5>
-                        <h3 id="orange-gamesWon" class="both-games-won">0</h3>
+                    <div id="right-rounds-won" class="rounds-won">
+                        <h5>Rounds Won</h5>
+                        <h3 id="orange-roundsWon" class="both-rounds-won">0</h3>
                     </div>
                 </div>
             </div>
@@ -79,6 +80,18 @@
     <div id="section4">
 
     </div>
+    <audio id="winning-sound">
+        <source src="sounds/little_robot_sound_factory_Jingle_Win_Synth_06.mp3" type="audio/mpeg" display="none">
+    </audio>
+    <audio id="munching-sound">
+        <source src="sounds/zapsplat_cartoon_bite_crunch_eat_13015.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="uh-oh-sound">
+        <source src="sounds/zapsplat_cartoon_character_voice_male_high_pitched_says_uh_oh_002_22828.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="yay-sound">
+        <source src="sounds/human_crowd_25_people_cheer_shout_yay.mp3" type="audio/mpeg">
+    </audio>
 </body>
 <footer>
 

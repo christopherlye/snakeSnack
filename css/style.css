@@ -176,7 +176,7 @@ p {
 	margin-top: 50px;
 }
 
-.name, .score, .games-won, .keys {
+.name, .score, .rounds-won, .keys {
 	width: 50%;
 	height: 80px;
 	background-color: white;
@@ -202,7 +202,7 @@ p {
 	/*margin-top: 10px;*/
 }
 
-.games-won {
+.rounds-won {
 	/*border: 5px solid black;*/
 	margin-top: 10px;
 	border-radius: 20px;
@@ -237,7 +237,7 @@ p {
 	font-size: 12px;
 }
 
-.both-games-won {
+.both-rounds-won {
 	margin-top: -10px;
 }
 

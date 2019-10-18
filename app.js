@@ -9,8 +9,8 @@
 
 // accessing the canvas
 let ctx = document.getElementById('ctx').getContext('2d');
-let blueGamesWon = document.getElementById('blue-gamesWon');
-let orangeGamesWon = document.getElementById('orange-gamesWon');
+let blueroundsWon = document.getElementById('blue-roundsWon');
+let orangeroundsWon = document.getElementById('orange-roundsWon');
 
 /*--------------------------------------------------------------------
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -81,11 +81,11 @@ const game = {
     intervalVar: null,
     interval: null,
     goal: 50,
-    gamesToWin: 1
+    roundsToWin: 1
 }
 
 class Snake {
-    constructor(name, color, width, height, parts, direction, score, speed, gamesWon) {
+    constructor(name, color, width, height, parts, direction, score, speed, roundsWon) {
         this.name = name;
         this.color = color;
         this.width = 20;
@@ -94,7 +94,7 @@ class Snake {
         this.direction = null;
         this.score = 0;
         this.speed = 0;
-        this.gamesWon = 0;
+        this.roundsWon = 0;
     }
 }
 
@@ -143,8 +143,7 @@ let spacebar, left, up, right, down, w, a, s, d;
 //Event handlers
 //////////////////////////////////////////////////////////////////////
 
-// start game function
-document.getElementById('ctx').onmousedown = () => {
+const mouseClickStart = () => {
     if (game.isRunning) {
         // clear interval so that it won't repeat itself too many times
         clearInterval(game.interval);
@@ -154,6 +153,13 @@ document.getElementById('ctx').onmousedown = () => {
     startGame();
 }
 
+// start game function
+// can't seem to get this working
+// document.getElementById('ctx').addEventListener('onmousedown', mouseClickStart);
+
+document.getElementById('ctx').onmousedown = () => {
+    mouseClickStart();
+}
 
 // reset game event
 document.getElementById('reset-game').onmousedown = () => {
@@ -388,6 +394,7 @@ const snakeEatFastFood = (snakeObj) => {
     if (snakeCollideFood(snakeObj, fastFood)) { // when snake and fastFood collide do the following
         fastFood.items = []; // fastFood is eaten
         fastFood.eaten = true;
+        document.getElementById('munching-sound').play();
         createFood(fastFood);
         if (snakeObj.speed < 10) {
             snakeObj.speed += 0.5;
@@ -424,6 +431,7 @@ const snakeEatSlowFood = (snakeObj, otherSnakeObj) => {
     if (snakeCollideFood(snakeObj, slowFood)) { // when snake and slowFood collide do the following
         slowFood.items = []; // slowFood is eaten
         slowFood.eaten = true;
+        document.getElementById('munching-sound').play();
         createFood(slowFood);
         otherSnakeObj.score += 5;
         clearInterval(game.interval);
@@ -487,9 +495,10 @@ const selfCollision = (snakeObj1, snakeObj2) => {
         }
         // snake head collide with part any part of it's body
         if (snakeCollideItself(snakeObj1.parts[0], snakeObj1.parts[i])) {
-            snakeObj2.gamesWon += 1;
+            snakeObj2.roundsWon += 1;
             clearInterval(game.interval);
-            ctx.fillText(`${snakeObj2.name} wins the round!`, 150, 220);
+            ctx.fillText(`${snakeObj2.name} wins the round!`, 100, 250);
+            document.getElementById('winning-sound').play();
             // ctx.fillText(`Click here for a new round!`, 100, 250);
             return;
         }
@@ -499,7 +508,8 @@ const selfCollision = (snakeObj1, snakeObj2) => {
 const collideAnother = (snakeObj1, snakeObj2) => {
     if (snakeCollideAnotherHead(snakeObj1.parts[0], snakeObj2.parts[0])) {
         clearInterval(game.interval);
-        ctx.fillText(`It's a tie!`, 190, 220);
+        ctx.fillText(`It's a tie!`, 190, 250);
+        document.getElementById('uh-oh-sound').play();
         // ctx.fillText(`Click here for a new round!`, 100, 250);
         return;
     }
@@ -507,9 +517,10 @@ const collideAnother = (snakeObj1, snakeObj2) => {
     else {
         for (i in snakeObj2.parts) {
             if (snakeCollideAnotherBody(snakeObj1.parts[0], snakeObj2.parts[i])) {
-                snakeObj2.gamesWon += 1;
+                snakeObj2.roundsWon += 1;
                 clearInterval(game.interval);
-                ctx.fillText(`${snakeObj2.name} wins the round!`, 150, 220);
+                ctx.fillText(`${snakeObj2.name} wins the round!`, 100, 250);
+                document.getElementById('winning-sound').play();
                 // ctx.fillText(`Click here for a new round!`, 100, 250);
                 return;
             }
@@ -517,42 +528,36 @@ const collideAnother = (snakeObj1, snakeObj2) => {
     }
 }
 
-// const checkScore = (snakeObj1, snakeObj2) => {
-//     if (snakeObj1.score  >= game.goal) {
-//         snakeObj1.gamesWon += 1;
-//         clearInterval(game.interval);
-//         ctx.fillText(`${snakeObj1.name} wins the round!`, 150, 250);
-//         return;
-//     }
-//     else if (snakeObj2.score >= game.goal) {
-//         snakeObj2.gamesWon += 1;
-//         clearInterval(game.interval);
-//         ctx.fillText(`${snakeObj2.name} wins the round!`, 150, 250);
-//         return;
-//     }
-// }
 
 const checkWins = (snakeObj1, snakeObj2) => {
-    if (snakeObj1.gamesWon === game.gamesToWin) {
+    if (snakeObj1.roundsWon === game.roundsToWin) {
         clearInterval(game.interval);
-        ctx.fillText(`${snakeObj1.name} is the winner!`, 150, 250);
+        ctx.fillText(`${snakeObj1.name} is the winner!`, 100, 250);
+        document.getElementById('yay-sound').play();
+        // document.getElementById('ctx').removeEventListener('onmousedown', mouseClickStart);
         return;
     }
-    else if (snakeObj2.gamesWon === game.gamesToWin) {
+    else if (snakeObj2.roundsWon === game.roundsToWin) {
         clearInterval(game.interval);
-        ctx.fillText(`${snakeObj2.name} is the winner!`, 150, 250);
+        ctx.fillText(`${snakeObj2.name} is the winner!`, 100, 250);
+        document.getElementById('yay-sound').play();
+        // document.getElementById('ctx').removeEventListener('onmousedown', mouseClickStart);
         return;
     }
     else if (snakeObj1.score  >= game.goal) {
-        snakeObj1.gamesWon += 1;
+        snakeObj1.roundsWon += 1;
         clearInterval(game.interval);
-        ctx.fillText(`${snakeObj1.name} wins the round!`, 150, 250);
+        ctx.fillText(`${snakeObj1.name} wins the round!`, 100, 250);
+        document.getElementById('winning-sound').play();
+        // document.getElementById('ctx').removeEventListener('onmousedown', mouseClickStart);
         return;
     }
     else if (snakeObj2.score >= game.goal) {
-        snakeObj2.gamesWon += 1;
+        snakeObj2.roundsWon += 1;
         clearInterval(game.interval);
-        ctx.fillText(`${snakeObj2.name} wins the round!`, 150, 250);
+        ctx.fillText(`${snakeObj2.name} wins the round!`, 100, 250);
+        document.getElementById('winning-sound').play();
+        // document.getElementById('ctx').removeEventListener('onmousedown', mouseClickStart);
         return;
     }
 }
@@ -603,13 +608,13 @@ const updateScreen = () => {
         // update score board
         // ctx.fillText(`Orange: ${snakeOne.score}`, 410, 30);
         // ctx.fillText(`Blue: ${snakeTwo.score}`, 10, 30);
-        orangeGamesWon.innerText = snakeOne.gamesWon;
-        blueGamesWon.innerText = snakeTwo.gamesWon;
+        orangeroundsWon.innerText = snakeOne.roundsWon;
+        blueroundsWon.innerText = snakeTwo.roundsWon;
 
 
         // check game over
 
-        if (snakeOne.gamesWon === game.gamesToWin || snakeTwo.gamesWon === game.gamesToWin) {
+        if (snakeOne.roundsWon === game.roundsToWin || snakeTwo.roundsWon === game.roundsToWin) {
             checkWins(snakeOne, snakeTwo);
         }
         else {
