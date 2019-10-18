@@ -3,9 +3,9 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 /*font-family: 'Josefin Sans', sans-serif;*/
 
-/** {
+* {
 	border: 1px solid gold;
-}*/
+}
 
 /*html {
 	background: url(../images/dark-green-header-1072179.jpg) no-repeat center center fixed;
@@ -55,6 +55,8 @@ a {
 	-webkit-box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
 	-moz-box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
 	box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
+	text-transform: uppercase;
+	/*display: none;*/
 }
 
 #play-now:hover {
@@ -72,7 +74,7 @@ a {
 	left: 0px;
 }
 
-#instructions {
+#instructions, #snake-snack {
 	color: white;
 	text-align: center;
 	margin-top: 120px;
@@ -117,14 +119,7 @@ a {
 p {
 	line-height: 180%;
 }
-/*
-.green-sweet {
-	color: lawngreen;
-}
 
-.red-sweet {
-	color: red;
-}*/
 
 #start-game {
 	margin: 25px auto;
@@ -142,6 +137,8 @@ p {
 	-webkit-box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
 	-moz-box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
 	box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
+	text-transform: uppercase;
+	/*display: none;*/
 }
 
 #start-game:hover {
@@ -151,14 +148,50 @@ p {
 #section3 {
 	height: 900px;
 	width: 100%;
-	background-color: pink;
+	background: url(../images/conifer-day-design-1028223.jpg) no-repeat center center;
+	background-size: cover;
+	background-color: black;
 	position: absolute;
 	margin-top: 1800px;
 	top: 0px;
 	left: 0px;
 }
 
-#section4 {
+#contains-three {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+
+
+
+
+#reset-game {
+	margin: 25px auto;
+	text-align: center;
+	display: block;
+	padding: 28px 80px;
+	background-color: rgba(0, 136,169, 1);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+	color: white;
+	font-size: 24px;
+	font-family: 'Press Start 2P', cursive;
+	-webkit-box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
+	-moz-box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
+	box-shadow: 0px 6px 0px 6px rgba(212,212,212,1);
+	text-transform: uppercase;
+	/*display: none;*/
+}
+
+#reset-game:hover {
+	background-color: rgba(255, 204, 51, 0.8);
+}
+
+/*#section4 {
 	height: 900px;
 	width: 100%;
 	background-color: blue;
@@ -166,6 +199,6 @@ p {
 	margin-top: 2700px;
 	top: 0px;
 	left: 0px;
-}
+}*/
 /*#cca329
 #006d87*/

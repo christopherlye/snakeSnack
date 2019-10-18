@@ -131,7 +131,7 @@ const slowFood = new Food('red');
 //Keyboard controls
 //////////////////////////////////////////////////////////////////////
 
-let spacebar, left, up, right, down;
+let spacebar, left, up, right, down, w, a, s, d;
 [spacebar, left, up, right, down, w, a, s, d] = [32, 37, 38, 39, 40, 87, 65, 83, 68];
 
 
@@ -197,6 +197,7 @@ document.onkeydown = (event) => {
             game.isPaused = true;
         }
     }
+    // event.preventDefault();
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -548,8 +549,8 @@ const updateScreen = () => {
         // update score board
         // ctx.fillText(`Orange: ${snakeOne.score}`, 410, 30);
         // ctx.fillText(`Blue: ${snakeTwo.score}`, 10, 30);
-        orangeGamesWon.innerText = snakeOne.gamesWon;
-        blueGamesWon.innerText = snakeTwo.gamesWon;
+        // orangeGamesWon.innerText = snakeOne.gamesWon;
+        // blueGamesWon.innerText = snakeTwo.gamesWon;
 
 
         // check game over
@@ -569,8 +570,8 @@ const updateScreen = () => {
         // console.log(game.intervalVar);
 
         // update snake current score on scoreboard
-        document.getElementById('orange-currentScore').innerText = snakeOne.score;
-        document.getElementById('blue-currentScore').innerText = snakeTwo.score;
+        // document.getElementById('orange-currentScore').innerText = snakeOne.score;
+        // document.getElementById('blue-currentScore').innerText = snakeTwo.score;
     }
     else {
         // no updating of items / movements if game is paused
