@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="#"><img src="" alt="Snake Snack ©" width="200"></a>
+  <a href="#"><img src="https://github.com/christopherlye/snakeSnack/blob/master/images/snake-snack2.gif" alt="Snake Snack ©" width="100%"></a>
   <br>
   Snake Snack ©
   <br>
