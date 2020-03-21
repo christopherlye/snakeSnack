@@ -1,12 +1,10 @@
 <h1 align="center">
-  <br>
-  <a href="#"><img src="https://github.com/christopherlye/snakeSnack/blob/master/images/snake-snack2.gif" alt="Snake Snack ©" width="100%"></a>
-  <br>
   Snake Snack ©
   <br>
+  <p align="center">Snake Snack © : A two player snake game that keeps you hungry for more!</p>
+  <br>
+  <p align="center"><img src="https://github.com/christopherlye/snakeSnack/blob/master/images/snake-snack2.gif" alt="Snake Snack ©" width="70%"></p>
 </h1>
-
-<p align="center">Snake Snack © : A two player snake game that keeps you hungry for more!</p>
 
 ---
 
