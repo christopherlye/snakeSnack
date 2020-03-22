@@ -7,7 +7,7 @@
 
 ## Inspiration
 
-<p align="justify">I wanted to create a browser game that people were thoroughly familiar with, but adding a twist to it. The initial idea was to create a Tron-like one player game where the player will navigate an arena with a vehicle which leaves a trail that acts as an obstacle for both human and AI players.</p>
+<p align="justify">I wanted to create a browser game that people are thoroughly familiar with, but with a twist. The initial idea was to create a Tron-like single player game where the player will navigate an arena with a vehicle which leaves a trail that acts as an obstacle for both human and AI players.</p>
 
 <p align="justify">However, as it turned out quite challenging for my first project, I decided to take on something more manageable as a prototype. So I developed a snake game which employed a similar logic for such a game and made it two players at the moment, removing the need to code the AI logic, while allowing family and friends to have fun together.</p>
 
@@ -67,6 +67,15 @@ There are no installation steps for this app.
 
 ---
 
+## TechStack
+
+- HTML
+- CSS
+- JavaScript
+- HTML canvas
+
+---
+
 ## Support
 
 ### Known Issues / Feedback
@@ -74,6 +83,18 @@ There are no installation steps for this app.
 - Snake may go out of the canvas sometimes
 - Both snakes may collide once a new round starts. You can overcome this by changing the direction of the snake immediately
 - Points system may be a bit confusing for players
+
+---
+
+## Authors
+
+- Christopher Lye
+
+---
+
+## Acknowledgements
+
+Thanks to the instructors, Henry and Bryan at General Assembly for teaching me the fundamentals of HTML, CSS, and JavaScript, which have provided me with the tools to make this project come alive.
 
 ---
 
