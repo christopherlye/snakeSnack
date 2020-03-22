@@ -1,7 +1,7 @@
 <h1 align="center">Snake Snack ©</h1>
 <p align="center">Snake Snack © : A two player snake game that keeps you hungry for more!</p>
 <br>
-<p align="center"><a href="https://christopherlye.com/games/snakeSnack/"><img src="https://github.com/christopherlye/snakeSnack/blob/master/images/github.io%20banner%20pic.png" alt="Snake Snack ©" width="100%"></a></p>
+<p align="center"><a href="https://christopherlye.com/games/snakeSnack/" target="_blank"><img src="https://github.com/christopherlye/snakeSnack/blob/master/images/github.io%20banner%20pic.png" alt="Snake Snack ©" width="100%"></a></p>
 
 ---
 
