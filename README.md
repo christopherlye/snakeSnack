@@ -1,13 +1,13 @@
 <h1 align="center">Snake Snack ©</h1>
 <p align="center">Snake Snack © : A two player snake game that keeps you hungry for more!</p>
 <br>
-<p align="center"><img src="https://github.com/christopherlye/snakeSnack/blob/master/images/github.io%20banner%20pic.png" alt="Snake Snack ©" width="70%"></p>
+<p align="center"><img src="https://github.com/christopherlye/snakeSnack/blob/master/images/github.io%20banner%20pic.png" alt="Snake Snack ©" width="100%"></p>
 
 ---
 
 ## Inspiration
 
-<p align="justify">I wanted to create a browser game that people are thoroughly familiar with, but with a twist. The initial idea was to create a Tron-like single player game where the player will navigate an arena with a vehicle which leaves a trail that acts as an obstacle for both human and AI players.</p>
+<p align="justify">I wanted to create a browser game that people are very familiar with, but with a twist. The initial idea was to create a Tron-like single player game where the player will navigate an arena with a vehicle which leaves a trail that acts as an obstacle for both human and AI players.</p>
 
 <p align="justify">However, as it turned out quite challenging for my first project, I decided to take on something more manageable as a prototype. So I developed a snake game which employed a similar logic for such a game and made it two players at the moment, removing the need to code the AI logic, while allowing family and friends to have fun together.</p>
 
