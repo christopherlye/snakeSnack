@@ -1,82 +1,86 @@
 <h1 align="center">Snake Snack ©</h1>
-<br>
 <p align="center">Snake Snack © : A two player snake game that keeps you hungry for more!</p>
 <br>
 <p align="center"><img src="https://github.com/christopherlye/snakeSnack/blob/master/images/snake-snack2.gif" alt="Snake Snack ©" width="70%"></p>
 
+---
+
+## Inspiration
+
+I wanted to create a browser game that people were thoroughly familiar with, but adding a twist to it. The initial idea was to create a Tron-like one player game where the player will navigate an arena with a vehicle which leaves a trail that acts as an obstacle for both human and AI players.
+
+However, as it turned out quite challenging for my first project, I decided to take on something more manageable as a prototype. So I developed a snake game which employed a similar logic for such a game and made it two players at the moment, removing the need to code the AI logic, while allowing family and friends to have fun together.
+
+Riding on the popularity of the fast food chain, Shake Shack, this two-player game, Snake Snack, was born. 🤓
 
 ---
 
+## Approach
+
+In summary:
+
+1. Decide on platform
+   - Found out how browser games are created
+   - Determined the method used (e.g. DOM manipulation, HTML canvas, phaser.io, melonjs.org)
+   - Decided on HTML canvas to scope my game and not have it all over the screen
+2. Create game logic using MVP concept
+   - Created a box in the canvas
+   - Added motion to the box based on event listeners
+   - Created various objects and game engine
+   - Created one snake using an array
+   - Created collision logic
+   - Extended to two snakes
+3. Style the game
+   - Changed snake colours
+   - Added sound clips during eating, collision, winning
+   - Customise a gif using piskel
+   - Refining of overall app
+
+---
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar. 
+### Requirements
 
-`Consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.`
+- A working browser
+- A laptop / tablet / desktop with a keyboard
+- A fun-loving friend who is willing to play the game with you 🕺🏽💃🏻
 
-<details><summary><b>Show steps:</b></summary>
+### Steps
 
-### Step 1:
+There are no installation steps for this app. Click button to play!
 
-```npm
-npm install foobar
-```
-
-## Usage
-
-```python
-import foobar
-
-foobar.console.log('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
-
-```javascript
-const s = "JavaScript syntax highlighting";
-alert(s);
-console.log('hello world');
-```
-
-`Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.`
-
-</details>
+<a href="https://christopherlye.github.io/project1"><button style="height: 50px; width: 100px; border-radius:20px; font-family: Courier; border: 3px solid #003300; background-color: green; color: white; "><h3>START</h3></button></a>
 
 ---
 
-## Changelog
-
-YYYY-MM-DD  John Doe  <johndoe@example.com>
-
-    * myfile.ext (myfunction): my changes made
-    additional changes
-
-    * myfile.ext (unrelated_change): my changes made
-    to myfile.ext but completely unrelated to the above
-
-    * anotherfile.ext (somefunction): more changes
-
-`Call it CHANGELOG.md`
-
 ## Roadmap
-`If you have ideas for releases in the future, it is a good idea to list them in the README.`
+
+### Ideas
+
+- Add AI logic for a player vs computer
+- Add AI logic for player vs player vs computer
+- Create Tron-like game
+- Create multi-player real-time online snake game with leaderboard
+- Build snake game on different platforms explored above
+- Build a mobile version of the snake game for two players
+
+---
 
 ## Support
+
+### Known Issues / Feedback
+
+- Snake may go out of the canvas sometimes
+- Both snakes may collide once a new round starts. You can overcome this by changing the direction of the snake immediately
+- Points system may be a bit confusing for players
+
 Found an issue or need help? Post an issue here: [Link](www.example.com)
 
-`Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.`
-
-## Contribute
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-`For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.`
+---
 
 ## License
 
-| S/N | Col |
-|--|--|
-| 1 | Data |
-| 2 | Data |
-| 3 | [MIT](https://choosealicense.com/licenses/mit/) |
+| S/N | License                                         |
+| --- | ----------------------------------------------- |
+| 1   | [MIT](https://choosealicense.com/licenses/mit/) |
