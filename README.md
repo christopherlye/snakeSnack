@@ -7,9 +7,9 @@
 
 ## Inspiration
 
-<p align="justify">I wanted to create a browser game that people are very familiar with, but with a twist. The initial idea was to create a Tron-like single player game where the player will navigate an arena with a vehicle which leaves a trail that acts as an obstacle for both human and AI players.</p>
-
-<p align="justify">However, as it turned out quite challenging for my first project, I decided to take on something more manageable as a prototype. So I developed a snake game which employed a similar logic for such a game and made it two players at the moment, removing the need to code the AI logic, while allowing family and friends to have fun together.</p>
+<p align="justify">I wanted to create a browser game that people are very familiar with, but with a twist. Instead of the usual game where the aim of the game is to last as long as possible in the game, now two players compete to be the first to reach 50 points by collecting snacks. One snack increases the speed of the game and adds a point for you, while the other snack extends the opponent's snake but adds 5 points to them.</p>
+   
+<p align="justify">With the time constraints I had, I chose to limit it a two-player game to focus on the core logic - to still fulfill the functional elements while while allowing family and friends to have fun together - instead of having to code the AI logic. This was meant as a prototype for my initial idea of creating a Tron-like single player game, where the player navigates an arena with a vehicle, leaving a trail that acts as obstacles for both human and AI players.</p>
 
 <p align="justify">Riding on the popularity of the fast food chain, Shake Shack, this two-player game, Snake Snack, was born. 🤓</p>
 
