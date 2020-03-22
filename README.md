@@ -75,8 +75,6 @@ There are no installation steps for this app.
 - Both snakes may collide once a new round starts. You can overcome this by changing the direction of the snake immediately
 - Points system may be a bit confusing for players
 
-Found an issue or need help? Post an issue here: [Link](www.example.com)
-
 ---
 
 ## License
