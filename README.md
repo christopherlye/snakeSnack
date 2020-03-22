@@ -7,11 +7,11 @@
 
 ## Inspiration
 
-I wanted to create a browser game that people were thoroughly familiar with, but adding a twist to it. The initial idea was to create a Tron-like one player game where the player will navigate an arena with a vehicle which leaves a trail that acts as an obstacle for both human and AI players.
+<p style="text-align: justify">I wanted to create a browser game that people were thoroughly familiar with, but adding a twist to it. The initial idea was to create a Tron-like one player game where the player will navigate an arena with a vehicle which leaves a trail that acts as an obstacle for both human and AI players.</p>
 
-However, as it turned out quite challenging for my first project, I decided to take on something more manageable as a prototype. So I developed a snake game which employed a similar logic for such a game and made it two players at the moment, removing the need to code the AI logic, while allowing family and friends to have fun together.
+<p style="text-align: justify">However, as it turned out quite challenging for my first project, I decided to take on something more manageable as a prototype. So I developed a snake game which employed a similar logic for such a game and made it two players at the moment, removing the need to code the AI logic, while allowing family and friends to have fun together.</p>
 
-Riding on the popularity of the fast food chain, Shake Shack, this two-player game, Snake Snack, was born. 🤓
+<p style="text-align: justify">Riding on the popularity of the fast food chain, Shake Shack, this two-player game, Snake Snack, was born. 🤓</p>
 
 ---
 
@@ -48,9 +48,9 @@ In summary:
 
 ### Steps
 
-There are no installation steps for this app. Click button to play!
+There are no installation steps for this app.
 
-<a href="https://christopherlye.github.io/project1"><button style="height: 50px; width: 100px; border-radius:20px; font-family: Courier; border: 3px solid #003300; background-color: green; color: white; "><h3>START</h3></button></a>
+[Click to play!](https://christopherlye.github.io/project1)
 
 ---
 
